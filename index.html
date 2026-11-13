@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeDrop | Blood Donation Camp</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <nav class="navbar">
+            <h2>❤️ LifeDrop</h2>
+
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#camps">Camps</a></li>
+                <li><a href="#register">Register</a></li>
+                <li><a href="#eligibility">Eligibility</a></li>
+                <li><a href="#appointment">Appointment</a></li>
+                <li><a href="#dashboard">Dashboard</a></li>
+                <li><a href="#organizer">Organizer</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home" class="hero">
+        <h1>Donate Blood, Save Lives</h1>
+        <p>Your one donation can make a difference in someone's life.</p>
+        <a href="#register" class="btn">Become a Donor</a>
+    </section>
+
+    <!-- Quick Statistics -->
+    <section class="metrics section" aria-label="LifeDrop statistics">
+        <div class="metric"><small>Registered donors</small><strong id="memberCount">0</strong><small>Saved in this browser</small></div>
+        <div class="metric"><small>Upcoming camps</small><strong id="campCount">3</strong><small>Sample events</small></div>
+        <div class="metric"><small>Blood units collected</small><strong id="donationCount">0</strong><small>Demo counter</small></div>
+        <div class="metric"><small>Blood groups</small><strong>08</strong><small>Groups represented</small></div>
+    </section>
+
+    <!-- Upcoming Camps -->
+    <section id="camps" class="section">
+        <div class="section-heading">
+            <div><h2>Upcoming Donation Camps</h2><p>Explore sample blood donation drives organized by campus volunteers.</p></div>
+            <input type="search" id="campSearch" placeholder="Search camp or venue..." aria-label="Search camps">
+        </div>
+        <div id="campList" class="camp-grid"></div>
+    </section>
+
+    <!-- Registration Section -->
+    <section id="register" class="section">
+        <h2>Donor Registration</h2>
+
+        <form id="donorForm" novalidate>
+
+            <input type="text" id="name"
+                placeholder="Full Name" required>
+
+            <input type="number" id="age"
+                placeholder="Age" min="18" max="65" required>
+
+            <input type="number" id="weight"
+                placeholder="Weight in KG" min="1" required>
+
+            <select id="bloodGroup" required>
+                <option value="">Select Blood Group</option>
+                <option>A+</option>
+                <option>A-</option>
+                <option>B+</option>
+                <option>B-</option>
+                <option>AB+</option>
+                <option>AB-</option>
+                <option>O+</option>
+                <option>O-</option>
+            </select>
+
+            <input type="tel" id="phone"
+                placeholder="10-digit Phone Number" pattern="[0-9]{10}" required>
+
+            <input type="email" id="email"
+                placeholder="Email Address" required>
+
+            <label class="check-label full-width"><input type="checkbox" id="donorConsent" required> I agree to be contacted about this demo camp and understand that medical staff make the final eligibility decision.</label>
+
+            <button type="submit">Register Now</button>
+
+        </form>
+
+        <p id="registrationMessage"></p>
+    </section>
+
+    <!-- Eligibility Section -->
+    <section id="eligibility" class="section">
+        <h2>Donor Eligibility Check</h2>
+
+        <form id="eligibilityForm">
+
+            <label>Is your weight above 45 kg?</label>
+            <select id="weightCheck" required>
+                <option value="">Choose</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+
+            <label>Have you had a tattoo in the last 6 months?</label>
+            <select id="tattooCheck" required>
+                <option value="">Choose</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+
+            <label>Has your hemoglobin been checked?</label>
+            <select id="hbCheck" required>
+                <option value="">Choose</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+
+            <label>Are you currently in good health?</label>
+            <select id="healthCheck" required>
+                <option value="">Choose</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+
+            <button type="submit">Check Eligibility</button>
+        </form>
+
+        <p id="eligibilityResult"></p>
+        <small>This is a preliminary self-check, not medical approval.
+        Final eligibility must be confirmed by medical staff.</small>
+    </section>
+
+    <!-- Appointment Section -->
+    <section id="appointment" class="section">
+        <h2>Book Your Appointment</h2>
+
+        <form id="appointmentForm">
+
+            <input type="text" id="appointmentName"
+                placeholder="Donor Name" required>
+
+            <input type="date" id="appointmentDate" required>
+
+            <select id="timeSlot" required>
+                <option value="">Select Time Slot</option>
+                <option>10:00 AM - 11:00 AM</option>
+                <option>11:00 AM - 12:00 PM</option>
+                <option>12:00 PM - 01:00 PM</option>
+                <option>02:00 PM - 03:00 PM</option>
+                <option>03:00 PM - 04:00 PM</option>
+            </select>
+
+            <button type="submit">Book Slot</button>
+        </form>
+
+        <p id="appointmentMessage"></p>
+    </section>
+
+    <!-- Dashboard Section -->
+    <section id="dashboard" class="section">
+        <h2>Blood Collection Dashboard</h2>
+
+        <h3>Blood Units Collected</h3>
+        <p><span id="units">0</span> / 100 Units</p>
+
+        <div class="progress-container">
+            <div id="progressBar"></div>
+        </div>
+
+        <button id="collectBtn">Simulate Collection</button>
+
+        <h3>Blood Group Inventory</h3>
+        <div id="inventory">
+            <p>A+: 5 units</p>
+            <p>B+: 4 units</p>
+            <p>AB+: 2 units</p>
+            <p>O+: 8 units</p>
+        </div>
+        <small>Illustrative sample data only, not live blood stock. Real inventory must be managed by an authorized blood bank.</small>
+    </section>
+
+    <!-- Organizer Dashboard -->
+    <section id="organizer" class="section">
+        <div class="section-heading">
+            <div><h2>Organizer Dashboard</h2><p>Review donor registrations and appointments saved in this browser.</p></div>
+            <button id="exportBtn" type="button">Export CSV</button>
+        </div>
+        <div class="organizer-toolbar">
+            <h3>Recent Donor Registrations</h3>
+            <button id="clearData" type="button" class="danger-button">Clear Demo Data</button>
+        </div>
+        <div id="donorList" class="donor-list"><p class="empty-state">No registrations yet.</p></div>
+        <h3 class="subheading">Saved Appointments</h3>
+        <div id="appointmentList" class="donor-list"><p class="empty-state">No appointments yet.</p></div>
+        <small class="disclaimer">Demo records are stored locally in this browser. This project has no backend, secure login, or real blood-bank connection.</small>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 LifeDrop | Donate Blood, Save Lives ❤️</p>
+        <small>Frontend-only student project demonstration.</small>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
